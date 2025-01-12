@@ -70,9 +70,6 @@ def response(flow: http.HTTPFlow):
     """Intercept responses if needed."""
     print(f"[+] Response from {flow.request.pretty_url} ({flow.response.status_code})")
     print("=" * 80)
-
-# Save the script as mitm_logger.py and run it with mitmproxy:
-# mitmproxy -s mitm_logger.py --mode transparent --listen-host 0.0.0.0
 ```
 3. Run mitmproxy with this script:
 ```mitmproxy -s mitm_proxy.py --mode transparent --showhost --set ssl_insecure=true```
