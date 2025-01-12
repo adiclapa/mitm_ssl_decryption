@@ -7,8 +7,8 @@
 ## Steps to Use:
 1. Install mitm proxy on Ubuntu VM2.
    1. Download and install from [mitmproxy website.](https://mitmproxy.org)
-   2. mitmproxy --mode transparent --showhost --set ssl_insecure=true
-   3. cat ~/.mitmproxy/mitmproxy-ca.pem
+   2. `mitmproxy --mode transparent --showhost --set ssl_insecure=true`
+   3. `cat ~/.mitmproxy/mitmproxy-ca.pem`
    4. Install the mitm proxy certificare on the Ubuntu VM1
 
 2. Use redsocks to redirect the traffic to the mitm proxy.
@@ -53,7 +53,7 @@
 5. Test traffic decryption
 
 # Create a python script to inspect the intercepted traffic and block sensitive information
-1. pip install mitmproxy
+1. `pip install mitmproxy`
 2. Mitm Proxy Logger script:
 ```python
 from mitmproxy import http
