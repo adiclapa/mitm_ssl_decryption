@@ -4,6 +4,38 @@
 - [Mitmproxy docs](https://docs.mitmproxy.org/stable/).
 - [Github issue](https://github.com/mitmproxy/mitmproxy/issues/458).
 
+1. Install mitm proxy.
+   1. Download and install from [mitmproxy website.](https://mitmproxy.org)
+   2. `mitmproxy -s mitm_proxy.py --showhost --set ssl_insecure=true`
+   3. `cat ~/.mitmproxy/mitmproxy-ca.pem`
+   4. Install the mitm proxy certificare on the Ubuntu VM
+   
+2. `pip install mitmproxy`
+3. Mitm Proxy Logger script:
+```python
+# Check mitm_proxy.py
+from mitmproxy import http
+
+def request(flow: http.HTTPFlow):
+    """Intercept HTTP/HTTPS requests and log them."""
+    print(f"[+] {flow.request.method} {flow.request.pretty_url}")
+    print(f"Headers: {flow.request.headers}")
+    if flow.request.content:
+        print(f"Body: {flow.request.get_text()}")
+    print("=" * 80)
+
+def response(flow: http.HTTPFlow):
+    """Intercept responses if needed."""
+    print(f"[+] Response from {flow.request.pretty_url} ({flow.response.status_code})")
+    print("=" * 80)
+```
+4. Start elastic + kibana:
+```
+docker compose up -d
+```
+
+
+# Old version
 ## Steps to Use:
 1. Install mitm proxy on Ubuntu VM2.
    1. Download and install from [mitmproxy website.](https://mitmproxy.org)
